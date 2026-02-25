@@ -115,7 +115,7 @@ const Landing = () => {
 
       {/* Footer */}
       <footer className="text-center py-8 text-teal-200 text-sm">
-        <p>© 2026 TripNest. Crafted with ❤️ for travelers By Raush.</p>
+        <p>© 2026 TripNest. Crafted with ❤️ for travelers By Sammi.</p>
       </footer>
     </div>
   );
