@@ -1,0 +1,141 @@
+-- Enable UUID extension
+create extension if not exists "uuid-ossp";
+
+-- Create users table
+create table users (
+  id uuid primary key default uuid_generate_v4(),
+  email text unique not null,
+  password text not null,
+  name text not null,
+  role text default 'user' check (role in ('user', 'super_admin')),
+  avatar text,
+  created_at timestamp with time zone default timezone('utc'::text, now()),
+  updated_at timestamp with time zone default timezone('utc'::text, now())
+);
+
+-- Create trips table
+create table trips (
+  id uuid primary key default uuid_generate_v4(),
+  title text not null,
+  description text,
+  destination text,
+  start_date date,
+  end_date date,
+  owner_id uuid references users(id) on delete cascade,
+  invite_hash text unique,
+  is_public boolean default false,
+  participants jsonb default '[]'::jsonb,
+  total_distance numeric default 0,
+  created_at timestamp with time zone default timezone('utc'::text, now()),
+  updated_at timestamp with time zone default timezone('utc'::text, now())
+);
+
+-- Create logs table
+create table logs (
+  id uuid primary key default uuid_generate_v4(),
+  trip_id uuid references trips(id) on delete cascade,
+  user_id uuid references users(id) on delete cascade,
+  location text,
+  date date,
+  notes text,
+  photo_url text,
+  coordinates jsonb,
+  created_at timestamp with time zone default timezone('utc'::text, now()),
+  updated_at timestamp with time zone default timezone('utc'::text, now())
+);
+
+-- Create storage bucket for photos
+insert into storage.buckets (id, name, public) values ('trip-photos', 'trip-photos', true);
+
+-- Set up RLS (Row Level Security)
+alter table users enable row level security;
+alter table trips enable row level security;
+alter table logs enable row level security;
+
+-- Users policies
+create policy "Users can view own profile" on users
+  for select using (auth.uid()::text = id::text);
+
+create policy "Users can update own profile" on users
+  for update using (auth.uid()::text = id::text);
+
+-- Trips policies
+create policy "Users can view trips they own or participate in" on trips
+  for select using (
+    owner_id = auth.uid()::text or 
+    participants @> jsonb_build_array(jsonb_build_object('user_id', auth.uid()))
+  );
+
+create policy "Users can create trips" on trips
+  for insert with check (auth.uid()::text = owner_id::text);
+
+create policy "Owners and editors can update trips" on trips
+  for update using (
+    owner_id = auth.uid()::text or
+    exists (
+      select 1 from jsonb_array_elements(participants) as p
+      where p->>'user_id' = auth.uid()::text and p->>'permission' = 'editor'
+    )
+  );
+
+create policy "Owners can delete trips" on trips
+  for delete using (owner_id = auth.uid()::text);
+
+-- Logs policies
+create policy "Users can view logs from trips they have access to" on logs
+  for select using (
+    exists (
+      select 1 from trips
+      where trips.id = logs.trip_id and (
+        trips.owner_id = auth.uid()::text or
+        trips.participants @> jsonb_build_array(jsonb_build_object('user_id', auth.uid()))
+      )
+    )
+  );
+
+create policy "Editors can create logs" on logs
+  for insert with check (
+    exists (
+      select 1 from trips
+      where trips.id = logs.trip_id and (
+        trips.owner_id = auth.uid()::text or
+        exists (
+          select 1 from jsonb_array_elements(trips.participants) as p
+          where p->>'user_id' = auth.uid()::text and p->>'permission' = 'editor'
+        )
+      )
+    )
+  );
+  
+
+create policy "Authors can update own logs" on logs
+  for update using (user_id = auth.uid()::text);
+
+create policy "Authors can delete own logs" on logs
+  for delete using (user_id = auth.uid()::text);
+
+-- Create indexes
+create index idx_trips_owner_id on trips(owner_id);
+create index idx_trips_invite_hash on trips(invite_hash);
+create index idx_logs_trip_id on logs(trip_id);
+create index idx_logs_user_id on logs(user_id);
+create index idx_logs_date on logs(date);
+
+-- Create updated_at trigger function
+create or replace function update_updated_at_column()
+returns trigger as $$
+begin
+  new.updated_at = timezone('utc'::text, now());
+  return new;
+end;
+$$ language plpgsql;
+
+-- Add triggers
+create trigger update_users_updated_at before update on users
+  for each row execute function update_updated_at_column();
+
+create trigger update_trips_updated_at before update on trips
+  for each row execute function update_updated_at_column();
+
+create trigger update_logs_updated_at before update on logs
+  for each row execute function update_updated_at_column();
