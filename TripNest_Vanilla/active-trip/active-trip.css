@@ -1,0 +1,153 @@
+/* ═══════════════════════════════════════════════
+   TripNest — Active Trip Styles
+   Split-screen layout: log feed (left) + map (right)
+═══════════════════════════════════════════════ */
+
+/* ─── Split-screen wrapper ───────────────────── */
+.trip-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ─── Left: Log Feed Panel ───────────────────── */
+.log-feed-panel {
+    width: 370px;
+    flex-shrink: 0;
+    background: var(--white);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.feed-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 700;
+    font-size: .95rem;
+    flex-shrink: 0;
+}
+
+.feed-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* ─── Log Card ───────────────────────────────── */
+.log-card {
+    background: var(--bg-light);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: default;
+}
+
+.log-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.log-cover {
+    height: 140px;
+}
+
+.log-cover img {
+    height: 100%;
+}
+
+.log-body {
+    padding: 12px 14px;
+}
+
+.log-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px;
+}
+
+.log-date {
+    font-size: .72rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.log-loc {
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.log-desc {
+    font-size: .77rem;
+    color: var(--text-mid);
+    line-height: 1.55;
+}
+
+.log-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+    flex-shrink: 0;
+}
+
+/* ─── Right: Map Panel ───────────────────────── */
+.map-panel {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+.map-info-box {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 999;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    box-shadow: var(--shadow-md);
+    font-size: .8rem;
+    color: var(--text-mid);
+    pointer-events: none;
+}
+
+.map-info-box strong {
+    display: block;
+    font-size: .88rem;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+}
+
+/* ─── Custom Map Marker ──────────────────────── */
+.custom-marker {
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border: 2px solid #fff;
+    box-shadow: var(--shadow-md);
+}
+
+.custom-marker span {
+    transform: rotate(45deg);
+    font-size: .65rem;
+    font-weight: 700;
+}

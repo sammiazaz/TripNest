@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — TripNest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <!-- Shared styles -->
+    <link rel="stylesheet" href="../shared/common.css" />
+    <!-- Page-specific styles -->
+    <link rel="stylesheet" href="dashboard.css" />
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- Sidebar is injected by sidebar.js -->
+
+        <div class="main">
+
+            <!-- Top Bar -->
+            <header class="topbar">
+                <span class="topbar-title">My Trips <span class="badge-count" id="trip-count">4</span></span>
+                <div class="topbar-actions">
+                    <a class="btn btn-ghost" href="../invite/invite.html">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+                            <polyline points="16 6 12 2 8 6" />
+                            <line x1="12" y1="2" x2="12" y2="15" />
+                        </svg>
+                        Share
+                    </a>
+                    <a class="btn btn-primary" href="../add-log/add-log.html">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        New Trip
+                    </a>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-scroll">
+                <div class="section-header">
+                    <h2 class="section-title">Your Adventures</h2>
+                </div>
+
+                <!-- Trip Cards Grid -->
+                <div class="trips-grid" id="trips-grid">
+
+                    <!-- Card 1 -->
+                    <div class="trip-card" onclick="window.location.href='../active-trip/active-trip.html'">
+                        <div class="trip-card-cover">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=75"
+                                alt="Tokyo" />
+                            <div class="cover-overlay"></div>
+                            <div class="status-badge active-badge">✈ Active</div>
+                        </div>
+                        <div class="trip-card-body">
+                            <div class="trip-dest">Tokyo, Japan</div>
+                            <div class="trip-dates">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                                Mar 14 – Mar 28, 2024
+                            </div>
+                            <div class="trip-footer">
+                                <div class="shared-info">
+                                    <div class="avatars">
+                                        <div class="avatar sm" style="background:#006c75">SA</div>
+                                        <div class="avatar sm" style="background:#e07b39">RK</div>
+                                        <div class="avatar sm" style="background:#4a90a4">PL</div>
+                                    </div>
+                                    <span class="shared-text"><em>Shared</em> · 3 members</span>
+                                </div>
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#006c75"
+                                    stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="trip-card" onclick="window.location.href='../active-trip/active-trip.html'">
+                        <div class="trip-card-cover">
+                            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&q=75"
+                                alt="Bali" />
+                            <div class="cover-overlay"></div>
+                            <div class="status-badge planned-badge">🌴 Planned</div>
+                        </div>
+                        <div class="trip-card-body">
+                            <div class="trip-dest">Bali, Indonesia</div>
+                            <div class="trip-dates">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                                Jun 5 – Jun 18, 2024
+                            </div>
+                            <div class="trip-footer">
+                                <div class="shared-info">
+                                    <div class="avatars">
+                                        <div class="avatar sm" style="background:#006c75">SA</div>
+                                        <div class="avatar sm" style="background:#7c4daf">MN</div>
+                                    </div>
+                                    <span class="shared-text"><em>Shared</em> · 2 members</span>
+                                </div>
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#006c75"
+                                    stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="trip-card">
+                        <div class="trip-card-cover">
+                            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400&q=75"
+                                alt="Paris" />
+                            <div class="cover-overlay"></div>
+                            <div class="status-badge done-badge">✓ Completed</div>
+                        </div>
+                        <div class="trip-card-body">
+                            <div class="trip-dest">Paris, France</div>
+                            <div class="trip-dates">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                                Dec 22 – Jan 1, 2024
+                            </div>
+                            <div class="trip-footer">
+                                <div class="shared-info">
+                                    <div class="avatars">
+                                        <div class="avatar sm" style="background:#006c75">SA</div>
+                                        <div class="avatar sm" style="background:#e07b39">RK</div>
+                                        <div class="avatar sm" style="background:#4a90a4">PL</div>
+                                        <div class="avatar sm" style="background:#7c4daf">MN</div>
+                                    </div>
+                                    <span class="shared-text"><em>Shared</em> · 4 members</span>
+                                </div>
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#006c75"
+                                    stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="trip-card">
+                        <div class="trip-card-cover">
+                            <img src="https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?w=400&q=75"
+                                alt="Santorini" />
+                            <div class="cover-overlay"></div>
+                            <div class="status-badge planned-badge">🌴 Planned</div>
+                        </div>
+                        <div class="trip-card-body">
+                            <div class="trip-dest">Santorini, Greece</div>
+                            <div class="trip-dates">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                                Sep 10 – Sep 20, 2024
+                            </div>
+                            <div class="trip-footer">
+                                <div class="shared-info">
+                                    <div class="avatars">
+                                        <div class="avatar sm" style="background:#006c75">SA</div>
+                                    </div>
+                                    <span class="shared-text">Solo trip</span>
+                                </div>
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#006c75"
+                                    stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add New Trip Card -->
+                    <div class="add-trip-card" onclick="window.location.href='../add-log/add-log.html'">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#006c75" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="9" />
+                            <line x1="12" y1="8" x2="12" y2="16" />
+                            <line x1="8" y1="12" x2="16" y2="12" />
+                        </svg>
+                        <p>Plan a New Trip</p>
+                    </div>
+
+                </div><!-- /.trips-grid -->
+            </div><!-- /.page-scroll -->
+        </div><!-- /.main -->
+    </div><!-- /#app -->
+
+    <!-- Set active page, then load sidebar -->
+    <script>window.ACTIVE_PAGE = 'dashboard';</script>
+    <script src="../shared/sidebar.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

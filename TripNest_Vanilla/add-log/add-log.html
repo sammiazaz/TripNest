@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Log — TripNest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../shared/common.css" />
+    <link rel="stylesheet" href="add-log.css" />
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- Sidebar injected by sidebar.js -->
+
+        <div class="main">
+
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div style="display:flex;align-items:center;gap:12px">
+                    <a class="btn btn-ghost" style="padding:8px 12px" href="../active-trip/active-trip.html">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                    </a>
+                    <span class="topbar-title">Add New Log</span>
+                </div>
+                <div class="topbar-actions">
+                    <a class="btn btn-ghost" href="../active-trip/active-trip.html">Discard</a>
+                    <button class="btn btn-primary" onclick="saveLog()">Save Log</button>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="log-page">
+                <div class="log-form-card">
+
+                    <!-- Card Header -->
+                    <div class="log-form-header">
+                        <div class="log-form-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#006c75"
+                                stroke-width="2">
+                                <path d="M12 20h9" />
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="log-form-title">New Travel Log</h1>
+                            <p class="log-form-sub">Document a moment from your trip</p>
+                        </div>
+                    </div>
+
+                    <!-- Trip Selector -->
+                    <div class="form-group">
+                        <label class="form-label">✈️ Trip</label>
+                        <select class="form-input" style="background:#fff">
+                            <option>🇯🇵 Tokyo Explorer — Spring 2024 (Active)</option>
+                            <option>🇮🇩 Bali, Indonesia — Jun 2024</option>
+                            <option>🇬🇷 Santorini, Greece — Sep 2024</option>
+                        </select>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="form-group">
+                        <label class="form-label">📍 Location</label>
+                        <div class="location-row">
+                            <input class="form-input" id="location-input" type="text"
+                                placeholder="Search a place, city, landmark…" style="background:#fff" />
+                            <button class="loc-search-btn" onclick="searchLocation()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="11" cy="11" r="8" />
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="location-suggestions" id="suggestions"></div>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="form-group">
+                        <label class="form-label">📅 Date</label>
+                        <input class="form-input" type="date" id="log-date" style="background:#fff" />
+                    </div>
+
+                    <!-- Tag -->
+                    <div class="form-group">
+                        <label class="form-label">🏷️ Category Tag</label>
+                        <div class="tag-grid" id="tag-grid">
+                            <div class="tag-chip selected" data-tag="Food" onclick="selectTag(this)">🍜 Food & Drink
+                            </div>
+                            <div class="tag-chip" data-tag="Culture" onclick="selectTag(this)">🎭 Culture</div>
+                            <div class="tag-chip" data-tag="Nature" onclick="selectTag(this)">🌿 Nature</div>
+                            <div class="tag-chip" data-tag="Urban" onclick="selectTag(this)">🏙️ Urban</div>
+                            <div class="tag-chip" data-tag="Shopping" onclick="selectTag(this)">🛍️ Shopping</div>
+                            <div class="tag-chip" data-tag="Transit" onclick="selectTag(this)">✈️ Transit</div>
+                        </div>
+                    </div>
+
+                    <!-- Upload Image -->
+                    <div class="form-group">
+                        <label class="form-label">📷 Photo</label>
+                        <div class="upload-area" id="upload-area"
+                            onclick="document.getElementById('file-input').click()">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#006c75"
+                                stroke-width="1.5">
+                                <rect x="3" y="3" width="18" height="18" rx="3" />
+                                <circle cx="8.5" cy="8.5" r="1.5" />
+                                <polyline points="21 15 16 10 5 21" />
+                            </svg>
+                            <p>Click to upload or drag &amp; drop</p>
+                            <span>PNG, JPG — max 10 MB</span>
+                        </div>
+                        <input type="file" id="file-input" accept="image/*" style="display:none"
+                            onchange="previewImage(event)" />
+                        <img id="img-preview"
+                            style="display:none;margin-top:12px;border-radius:10px;max-height:200px;object-fit:cover;width:100%;" />
+                    </div>
+
+                    <!-- Travel Notes -->
+                    <div class="form-group">
+                        <label class="form-label">✍️ Travel Notes</label>
+                        <textarea class="form-input" id="log-notes" rows="5"
+                            placeholder="What happened here? Describe the moment, the feeling, the people…"
+                            style="resize:vertical;line-height:1.65;background:#fff"></textarea>
+                        <div class="char-count" id="char-count">0 / 500 characters</div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="form-actions">
+                        <a class="btn btn-ghost" href="../active-trip/active-trip.html">Cancel</a>
+                        <button class="btn btn-primary" onclick="saveLog()">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                                <polyline points="17 21 17 13 7 13 7 21" />
+                                <polyline points="7 3 7 8 15 8" />
+                            </svg>
+                            Save Log
+                        </button>
+                    </div>
+
+                </div><!-- /.log-form-card -->
+            </div><!-- /.log-page -->
+        </div><!-- /.main -->
+    </div><!-- /#app -->
+
+    <script>window.ACTIVE_PAGE = 'add-log';</script>
+    <script src="../shared/sidebar.js"></script>
+    <script src="add-log.js"></script>
+</body>
+
+</html>

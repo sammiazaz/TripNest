@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Active Trip — TripNest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Shared + Page styles -->
+    <link rel="stylesheet" href="../shared/common.css" />
+    <link rel="stylesheet" href="active-trip.css" />
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- Sidebar injected by sidebar.js -->
+
+        <div class="main">
+
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div style="display:flex;align-items:center;gap:12px">
+                    <a class="btn btn-ghost" style="padding:8px 12px" href="../dashboard/dashboard.html">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                    </a>
+                    <span class="topbar-title">🇯🇵 Tokyo Explorer — Spring 2024</span>
+                </div>
+                <div class="topbar-actions">
+                    <a class="btn btn-ghost" href="../invite/invite.html">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <line x1="19" y1="8" x2="19" y2="14" />
+                            <line x1="22" y1="11" x2="16" y2="11" />
+                        </svg>
+                        Invite
+                    </a>
+                    <a class="btn btn-primary" href="../add-log/add-log.html">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Add Log
+                    </a>
+                </div>
+            </header>
+
+            <!-- Split-screen Content -->
+            <div class="trip-layout">
+
+                <!-- LEFT: Log Feed -->
+                <div class="log-feed-panel">
+                    <div class="feed-header">
+                        <h2>📍 Trip Logs <span class="badge-count" id="log-count">5</span></h2>
+                    </div>
+                    <div class="feed-scroll" id="log-feed">
+
+                        <div class="log-card">
+                            <div class="log-cover"><img
+                                    src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=400&q=70"
+                                    alt="Shinjuku" /></div>
+                            <div class="log-body">
+                                <div class="log-meta">
+                                    <div class="log-dot"></div><span class="log-date">Mar 14, 2024 · Arrival</span>
+                                </div>
+                                <div class="log-loc">Shinjuku, Tokyo</div>
+                                <div class="log-desc">Landed at Narita. Took the Narita Express to Shinjuku. The neon
+                                    lights at night were absolutely breathtaking!</div>
+                            </div>
+                        </div>
+
+                        <div class="log-card">
+                            <div class="log-cover"><img
+                                    src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=70"
+                                    alt="Asakusa" /></div>
+                            <div class="log-body">
+                                <div class="log-meta">
+                                    <div class="log-dot"></div><span class="log-date">Mar 16, 2024 · Cultural</span>
+                                </div>
+                                <div class="log-loc">Senso-ji Temple, Asakusa</div>
+                                <div class="log-desc">Visited the iconic Buddhist temple at dawn before the crowds. The
+                                    incense smoke and prayers were deeply meditative.</div>
+                            </div>
+                        </div>
+
+                        <div class="log-card">
+                            <div class="log-cover"><img
+                                    src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=400&q=70"
+                                    alt="Shibuya" /></div>
+                            <div class="log-body">
+                                <div class="log-meta">
+                                    <div class="log-dot"></div><span class="log-date">Mar 18, 2024 · Urban</span>
+                                </div>
+                                <div class="log-loc">Shibuya Crossing</div>
+                                <div class="log-desc">Experienced the world-famous scramble at peak hours. 3000 people
+                                    crossing at once — absolute organized chaos!</div>
+                            </div>
+                        </div>
+
+                        <div class="log-card">
+                            <div class="log-cover"><img
+                                    src="https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=400&q=70"
+                                    alt="Mt Fuji" /></div>
+                            <div class="log-body">
+                                <div class="log-meta">
+                                    <div class="log-dot"></div><span class="log-date">Mar 21, 2024 · Nature</span>
+                                </div>
+                                <div class="log-loc">Mt. Fuji Viewpoint, Hakone</div>
+                                <div class="log-desc">Day trip to Hakone — crystal clear day with a perfect cone view of
+                                    Fuji. Took the ropeway over volcanic vents.</div>
+                            </div>
+                        </div>
+
+                        <div class="log-card">
+                            <div class="log-cover"><img
+                                    src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=400&q=70"
+                                    alt="Harajuku" /></div>
+                            <div class="log-body">
+                                <div class="log-meta">
+                                    <div class="log-dot"></div><span class="log-date">Mar 24, 2024 · Food &
+                                        Culture</span>
+                                </div>
+                                <div class="log-loc">Harajuku, Takeshita Street</div>
+                                <div class="log-desc">Tried rainbow cotton candy and the famous crepes. Street fashion
+                                    was vibrant — so many unique styles!</div>
+                            </div>
+                        </div>
+
+                    </div><!-- /.feed-scroll -->
+                </div><!-- /.log-feed-panel -->
+
+                <!-- RIGHT: Map -->
+                <div class="map-panel">
+                    <div id="map"></div>
+                    <div class="map-info-box">
+                        <strong>Tokyo Explorer</strong>
+                        5 pins · Mar 2024
+                    </div>
+                </div>
+
+            </div><!-- /.trip-layout -->
+        </div><!-- /.main -->
+    </div><!-- /#app -->
+
+    <!-- Set active page, then load sidebar -->
+    <script>window.ACTIVE_PAGE = 'active-trip';</script>
+    <script src="../shared/sidebar.js"></script>
+    <!-- Leaflet map library -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="active-trip.js"></script>
+</body>
+
+</html>
