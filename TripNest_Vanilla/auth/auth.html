@@ -15,17 +15,14 @@
 
 <body>
 
-
     <div class="auth-right">
         <div class="auth-card">
 
-            <!-- Tabs -->
             <div class="auth-tabs">
                 <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Log In</button>
                 <button class="auth-tab" id="tab-signup" onclick="switchTab('signup')">Sign Up</button>
             </div>
 
-            <!-- ── LOGIN FORM ── -->
             <form class="auth-form" id="form-login" onsubmit="handleLogin(event)">
                 <div class="form-header">
                     <h2>Welcome back!</h2>
@@ -103,7 +100,6 @@
                         →</a></p>
             </form>
 
-            <!-- ── SIGNUP FORM ── -->
             <form class="auth-form hidden" id="form-signup" onsubmit="handleSignup(event)">
                 <div class="form-header">
                     <h2>Create account</h2>
@@ -209,7 +205,6 @@
         </div>
     </div>
 
-    <!-- Toast notification -->
     <div class="toast" id="toast"></div>
 
     <script src="auth.js"></script>

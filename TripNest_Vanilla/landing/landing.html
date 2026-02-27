@@ -11,20 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="landing.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body>
-
-    <!-- ╔══════ NAVBAR ══════════════════════════════════════╗ -->
+    <!-- navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-inner">
             <a class="nav-logo" href="#">
                 <div class="nav-logo-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.2">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                        <circle cx="12" cy="9" r="2.5" />
-                    </svg>
+                    <img src="../assets/logo" alt="TripNest Logo" width="46" height="46" style="object-fit:contain" />
                 </div>
                 <span>Trip<em>Nest</em></span>
             </a>
@@ -40,20 +36,17 @@
                 <a class="btn-nav-primary" href="../auth/auth.html?tab=signup">Get Started Free</a>
             </div>
 
-            <!-- Mobile hamburger -->
             <button class="hamburger" id="hamburger" onclick="toggleMenu()">
                 <span></span><span></span><span></span>
             </button>
         </div>
 
-        <!-- Mobile menu -->
         <div class="mobile-menu" id="mobile-menu">
             <a href="../auth/auth.html" onclick="toggleMenu()">Log In</a>
             <a href="../auth/auth.html?tab=signup" class="mobile-cta" onclick="toggleMenu()">Get Started Free →</a>
         </div>
     </nav>
 
-    <!-- ╔══════ HERO ═════════════════════════════════════════╗ -->
     <section class="hero">
         <div class="hero-bg-blobs">
             <div class="blob blob-1"></div>
@@ -71,14 +64,10 @@
                     TripNest lets you log memories, pin locations on a live map,
                     and invite your travel crew — all in one beautiful space.
                 </p>
-
             </div>
-
-
         </div>
     </section>
 
-    <!-- ╔══════ FEATURES ════════════════════════════════════╗ -->
     <section class="features-section" id="features">
         <div class="container">
             <div class="section-label">Why TripNest?</div>
@@ -88,10 +77,7 @@
 
                 <div class="feature-card">
                     <div class="feature-icon" style="background:#e0f4f5">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#006c75" stroke-width="2">
-                            <circle cx="12" cy="10" r="4" />
-                            <path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8z" />
-                        </svg>
+                        <i class="fa-solid fa-location-dot"></i>
                     </div>
                     <h3>Live Map Pins</h3>
                     <p>Every log you add drops a pin on an interactive map. See your entire journey plotted in real
@@ -100,25 +86,16 @@
 
                 <div class="feature-card">
                     <div class="feature-icon" style="background:#fef3e2">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e07b39" stroke-width="2">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                            <circle cx="9" cy="7" r="4" />
-                            <line x1="19" y1="8" x2="19" y2="14" />
-                            <line x1="22" y1="11" x2="16" y2="11" />
-                        </svg>
+                        <i class="fa-solid fa-user-plus"></i>
                     </div>
-                    <h3>Invite & Collaborate</h3>
+                    <h3>Invite &amp; Collaborate</h3>
                     <p>Generate a shareable link in seconds. Let friends join as Viewers or Editors — no sign-up
                         required.</p>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon" style="background:#ede7f6">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c4daf" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="3" />
-                            <circle cx="8.5" cy="8.5" r="1.5" />
-                            <polyline points="21 15 16 10 5 21" />
-                        </svg>
+                        <i class="fa-solid fa-camera"></i>
                     </div>
                     <h3>Photo Memories</h3>
                     <p>Upload your best shots to each log entry. Build a beautiful, chronological visual diary of your
@@ -127,10 +104,7 @@
 
                 <div class="feature-card">
                     <div class="feature-icon" style="background:#e8f5e9">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2ebd85" stroke-width="2">
-                            <path d="M12 20h9" />
-                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                        </svg>
+                        <i class="fa-solid fa-pen"></i>
                     </div>
                     <h3>Rich Travel Logs</h3>
                     <p>Write detailed notes for every moment. Tag each entry with a category — Food, Culture, Nature,
@@ -139,12 +113,7 @@
 
                 <div class="feature-card">
                     <div class="feature-icon" style="background:#e3f2fd">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a90a4" stroke-width="2">
-                            <rect x="3" y="3" width="7" height="7" rx="1" />
-                            <rect x="14" y="3" width="7" height="7" rx="1" />
-                            <rect x="3" y="14" width="7" height="7" rx="1" />
-                            <rect x="14" y="14" width="7" height="7" rx="1" />
-                        </svg>
+                        <i class="fa-solid fa-table-cells-large"></i>
                     </div>
                     <h3>Trip Dashboard</h3>
                     <p>All your trips in one beautiful grid view. Active, planned, completed — organized at a glance.
@@ -153,13 +122,7 @@
 
                 <div class="feature-card">
                     <div class="feature-icon" style="background:#fce4ec">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e91e63" stroke-width="2">
-                            <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
-                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
-                            <line x1="6" y1="1" x2="6" y2="4" />
-                            <line x1="10" y1="1" x2="10" y2="4" />
-                            <line x1="14" y1="1" x2="14" y2="4" />
-                        </svg>
+                        <i class="fa-solid fa-wifi"></i>
                     </div>
                     <h3>Works Offline</h3>
                     <p>Log your entry locally even without internet. Your memories sync automatically when you're back
@@ -170,7 +133,7 @@
         </div>
     </section>
 
-    <!-- ╔══════ HOW IT WORKS ════════════════════════════════╗ -->
+    <!-- How it Works section commented out
     <section class="how-section" id="how-it-works">
         <div class="container">
             <div class="section-label">Simple by Design</div>
@@ -234,49 +197,49 @@
             </div>
         </div>
     </section>
+    End of How it Works section -->
 
-    <!-- ╔══════ TESTIMONIALS ════════════════════════════════╗ -->
     <section class="testimonials-section" id="testimonials">
         <div class="container">
             <div class="section-label">Travel Stories</div>
             <h2 class="section-heading">Loved by adventurers.</h2>
             <div class="testimonials-grid">
 
-                <div class="testi-card">
-                    <div class="testi-stars">★★★★★</div>
+                <div class="review-card">
+                    <!-- <div class="testi-stars">★★★★★</div> -->
                     <p>"TripNest made our Tokyo trip feel like a movie. We all added logs in real time and it became
                         this beautiful shared journal."</p>
                     <div class="testi-author">
                         <div class="testi-avatar" style="background:#006c75">SA</div>
                         <div>
-                            <strong>Sammi A.</strong>
-                            <span>Tokyo & Bali Explorer</span>
+                            <strong>Sammi Azaz</strong>
+                            <span>Mumbai , India </span>
                         </div>
                     </div>
                 </div>
 
-                <div class="testi-card featured">
-                    <div class="testi-stars">★★★★★</div>
+                <div class="review-card featured">
+                    <!-- <div class="testi-stars">★★★★★</div> -->
                     <p>"The map view is incredible. Seeing all our pins across Japan plotted live as we explored — pure
                         magic. Can't travel without it now."</p>
                     <div class="testi-author">
                         <div class="testi-avatar" style="background:#e07b39">RK</div>
                         <div>
-                            <strong>Ravi K.</strong>
-                            <span>Backpacker, 14 countries</span>
+                            <strong>Ravi Kumar.</strong>
+                            <span>Tokyo, Japan</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="testi-card">
-                    <div class="testi-stars">★★★★★</div>
+                <div class="review-card">
+                    <!-- <div class="testi-stars">★★★★★</div> -->
                     <p>"Invited my whole family with one link. My parents could follow along as viewers while we logged
                         from Santorini. Super easy!"</p>
                     <div class="testi-author">
                         <div class="testi-avatar" style="background:#4a90a4">PL</div>
                         <div>
-                            <strong>Priya L.</strong>
-                            <span>Family Traveller</span>
+                            <strong>Priyanshu Ranjan</strong>
+                            <span>Spain</span>
                         </div>
                     </div>
                 </div>
@@ -285,7 +248,6 @@
         </div>
     </section>
 
-    <!-- ╔══════ CTA BANNER ══════════════════════════════════╗ -->
     <section class="cta-section">
         <div class="cta-inner">
             <div class="cta-blobs">
@@ -301,37 +263,34 @@
         </div>
     </section>
 
-    <!-- ╔══════ FOOTER ══════════════════════════════════════╗ -->
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-brand">
                 <a class="nav-logo" href="#" style="margin-bottom:8px">
-                    <div class="nav-logo-icon" style="width:28px;height:28px">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.2">
-                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                            <circle cx="12" cy="9" r="2.5" />
-                        </svg>
+                    <div class="nav-logo-icon" style="width:36px;height:36px">
+                        <img src="../assets/logo" alt="TripNest Logo" width="34" height="34"
+                            style="object-fit:contain" />
                     </div>
-                    <span style="font-size:.95rem">Trip<em>Nest</em></span>
-                </a>
-                <p>Log, map, and share your journeys with the people who matter most.</p>
             </div>
-            <div class="footer-links">
-                <div class="footer-col">
-                    <strong>Product</strong>
-                    <a href="#features">Features</a>
-                    <a href="#how-it-works">How it Works</a>
-                    <a href="../dashboard/dashboard.html">Dashboard</a>
-                </div>
-                <div class="footer-col">
-                    <strong>Pages</strong>
-                    <a href="../dashboard/dashboard.html">Dashboard</a>
-                    <a href="../active-trip/active-trip.html">Active Trip</a>
-                    <a href="../invite/invite.html">Invite</a>
-                    <a href="../add-log/add-log.html">Add Log</a>
-                </div>
+            <span style="font-size:.95rem">Trip<em>Nest</em></span>
+            </a>
+            <p>Log, map, and share your journeys with the people who matter most.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-col">
+                <strong>Product</strong>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How it Works</a>
+                <a href="../dashboard/dashboard.html">Dashboard</a>
             </div>
+            <div class="footer-col">
+                <strong>Pages</strong>
+                <a href="../dashboard/dashboard.html">Dashboard</a>
+                <a href="../active-trip/active-trip.html">Active Trip</a>
+                <a href="../invite/invite.html">Invite</a>
+                <a href="../add-log/add-log.html">Add Log</a>
+            </div>
+        </div>
         </div>
         <div class="footer-bottom">
             <span>© 2024 TripNest · Built with ❤️ for Web Technology</span>

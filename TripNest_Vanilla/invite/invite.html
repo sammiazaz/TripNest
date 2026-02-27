@@ -15,11 +15,9 @@
 <body>
 
     <div id="app">
-        <!-- Sidebar injected by sidebar.js -->
 
         <div class="main">
 
-            <!-- Top Bar -->
             <header class="topbar">
                 <div style="display:flex;align-items:center;gap:12px">
                     <a class="btn btn-ghost" style="padding:8px 12px" href="../active-trip/active-trip.html">
@@ -32,11 +30,9 @@
                 </div>
             </header>
 
-            <!-- Page Content -->
             <div class="invite-page">
                 <div class="invite-card">
 
-                    <!-- Header -->
                     <div class="invite-card-header">
                         <div class="invite-icon">
                             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#006c75"
@@ -53,9 +49,8 @@
                         </div>
                     </div>
 
-                    <!-- Generate Link -->
                     <div class="form-group">
-                        <label class="form-label">🔗 Generate Invite Link</label>
+                        <label class="form-label">Generate Invite Link</label>
                         <button class="gen-link-btn" id="gen-btn" onclick="generateLink()">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -71,20 +66,18 @@
                         </div>
                     </div>
 
-                    <!-- Permission -->
                     <div class="form-group">
-                        <label class="form-label">🔒 Permission Level</label>
+                        <label class="form-label">Permission Level</label>
                         <select class="form-input" id="permission">
-                            <option value="viewer">👁 Viewer — Can view logs only</option>
-                            <option value="editor">✏️ Editor — Can add &amp; edit logs</option>
+                            <option value="viewer">Viewer — Can view logs only</option>
+                            <option value="editor">Editor — Can add &amp; edit logs</option>
                         </select>
                         <p class="permission-hint" id="permission-hint">Viewers can browse the full trip but cannot make
                             changes.</p>
                     </div>
 
-                    <!-- Email Invite -->
                     <div class="form-group">
-                        <label class="form-label">📧 Invite by Email</label>
+                        <label class="form-label">Invite by Email</label>
                         <div class="url-row">
                             <input class="form-input" id="email-input" type="email" placeholder="friend@email.com"
                                 style="background:#fff" />
@@ -92,7 +85,6 @@
                         </div>
                     </div>
 
-                    <!-- Current Members -->
                     <div class="members-row">
                         <span class="form-label" style="margin:0">Current Members</span>
                         <div class="member-list" id="member-list">
@@ -111,16 +103,15 @@
                         </div>
                     </div>
 
-                    <!-- Back Button -->
                     <a class="btn btn-outline" href="../active-trip/active-trip.html"
                         style="margin-top:8px;justify-content:center">
                         ← Back to Trip
                     </a>
 
-                </div><!-- /.invite-card -->
-            </div><!-- /.invite-page -->
-        </div><!-- /.main -->
-    </div><!-- /#app -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>window.ACTIVE_PAGE = 'invite';</script>
     <script src="../shared/sidebar.js"></script>

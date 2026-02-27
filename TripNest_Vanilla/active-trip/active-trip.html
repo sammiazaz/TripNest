@@ -8,8 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
-    <!-- Leaflet Map CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
     <!-- Shared + Page styles -->
     <link rel="stylesheet" href="../shared/common.css" />
     <link rel="stylesheet" href="active-trip.css" />
@@ -31,7 +30,7 @@
                             <polyline points="15 18 9 12 15 6" />
                         </svg>
                     </a>
-                    <span class="topbar-title">🇯🇵 Tokyo Explorer — Spring 2024</span>
+                    <span class="topbar-title">�� India Road Trip — Winter 2024</span>
                 </div>
                 <div class="topbar-actions">
                     <a class="btn btn-ghost" href="../invite/invite.html">
@@ -61,7 +60,7 @@
                 <!-- LEFT: Log Feed -->
                 <div class="log-feed-panel">
                     <div class="feed-header">
-                        <h2>📍 Trip Logs <span class="badge-count" id="log-count">5</span></h2>
+                        <h2> Trip Logs <span class="badge-count" id="log-count">5</span></h2>
                     </div>
                     <div class="feed-scroll" id="log-feed">
 
@@ -139,12 +138,12 @@
                     </div><!-- /.feed-scroll -->
                 </div><!-- /.log-feed-panel -->
 
-                <!-- RIGHT: Map -->
+                <!-- RIGHT: Map (demo image) -->
                 <div class="map-panel">
-                    <div id="map"></div>
+                    <img id="map-img" src="../assets/map-demo.png" alt="India trip route map" />
                     <div class="map-info-box">
-                        <strong>Tokyo Explorer</strong>
-                        5 pins · Mar 2024
+                        <strong>India Road Trip</strong>
+                        5 pins · Dec 2024
                     </div>
                 </div>
 
@@ -155,8 +154,6 @@
     <!-- Set active page, then load sidebar -->
     <script>window.ACTIVE_PAGE = 'active-trip';</script>
     <script src="../shared/sidebar.js"></script>
-    <!-- Leaflet map library -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="active-trip.js"></script>
 </body>
 

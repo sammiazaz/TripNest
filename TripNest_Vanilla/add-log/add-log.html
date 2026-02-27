@@ -15,11 +15,9 @@
 <body>
 
     <div id="app">
-        <!-- Sidebar injected by sidebar.js -->
 
         <div class="main">
 
-            <!-- Top Bar -->
             <header class="topbar">
                 <div style="display:flex;align-items:center;gap:12px">
                     <a class="btn btn-ghost" style="padding:8px 12px" href="../active-trip/active-trip.html">
@@ -36,11 +34,9 @@
                 </div>
             </header>
 
-            <!-- Page Content -->
             <div class="log-page">
                 <div class="log-form-card">
 
-                    <!-- Card Header -->
                     <div class="log-form-header">
                         <div class="log-form-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#006c75"
@@ -55,19 +51,17 @@
                         </div>
                     </div>
 
-                    <!-- Trip Selector -->
                     <div class="form-group">
-                        <label class="form-label">✈️ Trip</label>
+                        <label class="form-label">Trip</label>
                         <select class="form-input" style="background:#fff">
-                            <option>🇯🇵 Tokyo Explorer — Spring 2024 (Active)</option>
+                            <option>🇮🇳 India Road Trip — Winter 2024 (Active)</option>
                             <option>🇮🇩 Bali, Indonesia — Jun 2024</option>
                             <option>🇬🇷 Santorini, Greece — Sep 2024</option>
                         </select>
                     </div>
 
-                    <!-- Location -->
                     <div class="form-group">
-                        <label class="form-label">📍 Location</label>
+                        <label class="form-label">Location</label>
                         <div class="location-row">
                             <input class="form-input" id="location-input" type="text"
                                 placeholder="Search a place, city, landmark…" style="background:#fff" />
@@ -82,29 +76,26 @@
                         <div class="location-suggestions" id="suggestions"></div>
                     </div>
 
-                    <!-- Date -->
                     <div class="form-group">
-                        <label class="form-label">📅 Date</label>
+                        <label class="form-label">Date</label>
                         <input class="form-input" type="date" id="log-date" style="background:#fff" />
                     </div>
 
-                    <!-- Tag -->
                     <div class="form-group">
-                        <label class="form-label">🏷️ Category Tag</label>
+                        <label class="form-label">Category Tag</label>
                         <div class="tag-grid" id="tag-grid">
-                            <div class="tag-chip selected" data-tag="Food" onclick="selectTag(this)">🍜 Food & Drink
+                            <div class="tag-chip selected" data-tag="Food" onclick="selectTag(this)">Food &amp; Drink
                             </div>
-                            <div class="tag-chip" data-tag="Culture" onclick="selectTag(this)">🎭 Culture</div>
-                            <div class="tag-chip" data-tag="Nature" onclick="selectTag(this)">🌿 Nature</div>
-                            <div class="tag-chip" data-tag="Urban" onclick="selectTag(this)">🏙️ Urban</div>
-                            <div class="tag-chip" data-tag="Shopping" onclick="selectTag(this)">🛍️ Shopping</div>
-                            <div class="tag-chip" data-tag="Transit" onclick="selectTag(this)">✈️ Transit</div>
+                            <div class="tag-chip" data-tag="Culture" onclick="selectTag(this)">Culture</div>
+                            <div class="tag-chip" data-tag="Nature" onclick="selectTag(this)">Nature</div>
+                            <div class="tag-chip" data-tag="Urban" onclick="selectTag(this)">Urban</div>
+                            <div class="tag-chip" data-tag="Shopping" onclick="selectTag(this)">Shopping</div>
+                            <div class="tag-chip" data-tag="Transit" onclick="selectTag(this)">Transit</div>
                         </div>
                     </div>
 
-                    <!-- Upload Image -->
                     <div class="form-group">
-                        <label class="form-label">📷 Photo</label>
+                        <label class="form-label">Photo</label>
                         <div class="upload-area" id="upload-area"
                             onclick="document.getElementById('file-input').click()">
                             <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#006c75"
@@ -122,16 +113,14 @@
                             style="display:none;margin-top:12px;border-radius:10px;max-height:200px;object-fit:cover;width:100%;" />
                     </div>
 
-                    <!-- Travel Notes -->
                     <div class="form-group">
-                        <label class="form-label">✍️ Travel Notes</label>
+                        <label class="form-label">Travel Notes</label>
                         <textarea class="form-input" id="log-notes" rows="5"
                             placeholder="What happened here? Describe the moment, the feeling, the people…"
                             style="resize:vertical;line-height:1.65;background:#fff"></textarea>
                         <div class="char-count" id="char-count">0 / 500 characters</div>
                     </div>
 
-                    <!-- Actions -->
                     <div class="form-actions">
                         <a class="btn btn-ghost" href="../active-trip/active-trip.html">Cancel</a>
                         <button class="btn btn-primary" onclick="saveLog()">
@@ -145,10 +134,10 @@
                         </button>
                     </div>
 
-                </div><!-- /.log-form-card -->
-            </div><!-- /.log-page -->
-        </div><!-- /.main -->
-    </div><!-- /#app -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>window.ACTIVE_PAGE = 'add-log';</script>
     <script src="../shared/sidebar.js"></script>

@@ -1,16 +1,9 @@
-/* ═══════════════════════════════════════════════
-   TripNest — Active Trip Styles
-   Split-screen layout: log feed (left) + map (right)
-═══════════════════════════════════════════════ */
-
-/* ─── Split-screen wrapper ───────────────────── */
 .trip-layout {
     display: flex;
     flex: 1;
     overflow: hidden;
 }
 
-/* ─── Left: Log Feed Panel ───────────────────── */
 .log-feed-panel {
     width: 370px;
     flex-shrink: 0;
@@ -38,7 +31,6 @@
     gap: 14px;
 }
 
-/* ─── Log Card ───────────────────────────────── */
 .log-card {
     background: var(--bg-light);
     border-radius: var(--radius-md);
@@ -99,16 +91,17 @@
     flex-shrink: 0;
 }
 
-/* ─── Right: Map Panel ───────────────────────── */
 .map-panel {
     flex: 1;
     position: relative;
     overflow: hidden;
 }
 
-#map {
+#map-img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .map-info-box {
@@ -130,24 +123,4 @@
     font-size: .88rem;
     color: var(--text-dark);
     margin-bottom: 2px;
-}
-
-/* ─── Custom Map Marker ──────────────────────── */
-.custom-marker {
-    background: var(--primary);
-    color: #fff;
-    border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg);
-    width: 30px;
-    height: 30px;
-    display: grid;
-    place-items: center;
-    border: 2px solid #fff;
-    box-shadow: var(--shadow-md);
-}
-
-.custom-marker span {
-    transform: rotate(45deg);
-    font-size: .65rem;
-    font-weight: 700;
 }
