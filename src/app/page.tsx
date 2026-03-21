@@ -10,9 +10,9 @@ import {
   CloudOff,
   MapPin,
   Star,
-} from 'lucide-react';
-
-export default function LandingPage() {
+} from 'lucide-react';  
+ 
+export default function LandingPage() { 
   return (
     <div className="min-h-screen bg-[#F8F9FA] text-[#191c1d] font-sans overflow-x-hidden">
       {/* Blurred hero background */}
