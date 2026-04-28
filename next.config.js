@@ -2,6 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
+  basePath: '/TripNest',
+  assetPrefix: '/TripNest/',
   images: {
     unoptimized: true,
     remotePatterns: [
