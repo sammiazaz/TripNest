@@ -70,11 +70,11 @@ export default async function LandingPage() {
               <span className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#954a00] mb-3 block">
                 Next-Gen Travel Planning
               </span>
-              <h1 className="text-[clamp(48px,6vw,72px)] font-extrabold leading-[1.1] tracking-[-0.04em] text-[#191c1d] mb-6">
-                TripNest: Your Collaborative Travel Companion.
+              <h1 className="text-[clamp(48px,6vw,84px)] font-[900] leading-[0.95] tracking-[-0.06em] text-[#191c1d] mb-8">
+                Your next adventure, <span className="text-blue-600">perfectly nested.</span>
               </h1>
-              <p className="text-[18px] leading-relaxed text-[#444748] max-w-xl mb-10">
-                Plan, track, and share your adventures in real-time. Whether it&apos;s a weekend getaway or a corporate retreat, we keep your squad in sync.
+              <p className="text-[20px] leading-relaxed text-slate-500 max-w-xl mb-12 font-medium">
+                The all-in-one collaborative space to plan itineraries, split expenses, and store memories with your squad.
               </p>
               <Link
                 href="/signup"
