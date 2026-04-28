@@ -12,54 +12,59 @@ export function Sidebar() {
   const userInitial = userName.charAt(0).toUpperCase();
 
   return (
-    <aside className="hidden md:flex h-screen w-64 border-r fixed left-0 top-0 bg-slate-50/80 backdrop-blur-2xl border-white/40 shadow-xl shadow-blue-900/5 flex-col gap-2 py-6 px-4 z-50">
-      <Link href="/dashboard" className="flex items-center gap-3 px-2 mb-8 hover:opacity-80 transition-opacity">
-        <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary">
-          <span className="material-symbols-outlined" data-icon="travel_explore">travel_explore</span>
+    <aside className="hidden md:flex h-screen w-64 border-r fixed left-0 top-0 bg-white/80 backdrop-blur-3xl border-slate-200/60 shadow-[0_0_40px_rgba(0,0,0,0.03)] flex-col gap-2 py-8 px-5 z-50">
+      <Link href="/dashboard" className="flex items-center gap-3 px-2 mb-10 hover:opacity-80 transition-all active:scale-95">
+        <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-200">
+          <span className="material-symbols-outlined text-[20px]" data-icon="travel_explore">travel_explore</span>
         </div>
         <div>
-          <h1 className="text-lg font-black text-blue-700 font-headline-md tracking-tight">TripNest</h1>
-          <p className="text-xs text-slate-500 font-label-md">Collaborative Travel</p>
+          <h1 className="text-xl font-black text-slate-900 tracking-tighter leading-none">TripNest</h1>
+          <p className="text-[10px] text-blue-600 font-bold uppercase tracking-widest mt-1">Collab Space</p>
         </div>
       </Link>
-      <nav className="flex flex-col gap-1">
-        <Link href="/dashboard" className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ease-in-out cursor-pointer ${pathname === '/dashboard' ? 'text-blue-700 font-bold border-r-4 border-blue-600 bg-blue-50/50' : 'text-slate-500 hover:bg-white/50 hover:scale-[1.02]'}`}>
-          <span className="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-          <span className="font-label-lg">Dashboard</span>
-        </Link>
-        <Link href="/trips" className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ease-in-out cursor-pointer ${pathname === '/trips' ? 'text-blue-700 font-bold border-r-4 border-blue-600 bg-blue-50/50' : 'text-slate-500 hover:bg-white/50 hover:scale-[1.02]'}`}>
-          <span className="material-symbols-outlined" data-icon="explore">explore</span>
-          <span className="font-label-lg">My Trips</span>
-        </Link>
-        <Link href="/memory-vault" className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ease-in-out cursor-pointer ${pathname === '/memory-vault' ? 'text-blue-700 font-bold border-r-4 border-blue-600 bg-blue-50/50' : 'text-slate-500 hover:bg-white/50 hover:scale-[1.02]'}`}>
-          <span className="material-symbols-outlined" data-icon="groups">groups</span>
-          <span className="font-label-lg">Shared Space</span>
-        </Link>
-        <Link href="/finances" className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ease-in-out cursor-pointer ${pathname === '/finances' ? 'text-blue-700 font-bold border-r-4 border-blue-600 bg-blue-50/50' : 'text-slate-500 hover:bg-white/50 hover:scale-[1.02]'}`}>
-          <span className="material-symbols-outlined" data-icon="payments">payments</span>
-          <span className="font-label-lg">Finances</span>
-        </Link>
-        <Link href="/settings" className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ease-in-out cursor-pointer ${pathname === '/settings' ? 'text-blue-700 font-bold border-r-4 border-blue-600 bg-blue-50/50' : 'text-slate-500 hover:bg-white/50 hover:scale-[1.02]'}`}>
-          <span className="material-symbols-outlined" data-icon="settings" style={pathname === '/settings' ? { fontVariationSettings: "'FILL' 1" } : {}}>settings</span>
-          <span className="font-label-lg">Settings</span>
-        </Link>
+      <nav className="flex flex-col gap-2">
+        {[
+          { href: '/dashboard', label: 'Dashboard', icon: 'dashboard' },
+          { href: '/trips', label: 'My Trips', icon: 'explore' },
+          { href: '/memory-vault', label: 'Shared Space', icon: 'groups' },
+          { href: '/finances', label: 'Finances', icon: 'payments' },
+          { href: '/settings', label: 'Settings', icon: 'settings' },
+        ].map((item) => (
+          <Link 
+            key={item.href}
+            href={item.href} 
+            className={`flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-300 group ${
+              pathname === item.href 
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 font-bold' 
+                : 'text-slate-500 hover:bg-blue-50 hover:text-blue-600'
+            }`}
+          >
+            <span className={`material-symbols-outlined text-[22px] transition-transform group-hover:scale-110 ${pathname === item.href ? 'fill-1' : ''}`} data-icon={item.icon} style={pathname === item.href ? { fontVariationSettings: "'FILL' 1" } : {}}>
+              {item.icon}
+            </span>
+            <span className="text-sm tracking-tight">{item.label}</span>
+          </Link>
+        ))}
       </nav>
-      <div className="mt-auto p-4 glass-card rounded-2xl">
-        <div className="flex items-center gap-3 mb-4">
+      <div className="mt-auto p-5 bg-slate-50 rounded-3xl border border-slate-100">
+        <div className="flex items-center gap-3 mb-5">
           {userAvatar ? (
-            <img className="w-10 h-10 rounded-full object-cover border-2 border-white" alt={userName} src={userAvatar}/>
+            <img className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" alt={userName} src={userAvatar}/>
           ) : (
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary border-2 border-white font-bold text-sm">
+            <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center border-2 border-white shadow-sm font-bold text-sm">
               {userInitial}
             </div>
           )}
           <div className="overflow-hidden">
-            <p className="text-sm font-bold truncate">{userName}</p>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wider">Member</p>
+            <p className="text-sm font-bold text-slate-900 truncate">{userName}</p>
+            <p className="text-[10px] text-slate-500 font-medium">Free Plan</p>
           </div>
         </div>
-        <button onClick={() => signOut({ callbackUrl: '/' })} className="w-full py-2 bg-primary-container text-on-primary-container rounded-lg text-xs font-bold hover:opacity-90 transition-opacity">
-          Log Out
+        <button 
+          onClick={() => signOut({ callbackUrl: '/' })} 
+          className="w-full py-2.5 bg-white text-slate-600 border border-slate-200 rounded-xl text-xs font-bold hover:bg-red-50 hover:text-red-600 hover:border-red-100 transition-all active:scale-95"
+        >
+          Sign Out
         </button>
       </div>
     </aside>

@@ -12,6 +12,7 @@ import {
   Sparkles,
   CloudOff,
   MapPin,
+  Star,
 } from 'lucide-react';
 
 export default async function LandingPage() {
@@ -59,30 +60,6 @@ export default async function LandingPage() {
           </div>
         </div>
       </nav>
-
-      {/* ─── SIDE NAV ─── */}
-      {/* <aside className="hidden lg:flex fixed left-8 top-1/2 -translate-y-1/2 z-40">
-        <div className="flex flex-col gap-3 p-2 rounded-full shadow-lg border border-white/50"
-          style={{ background: 'rgba(255,255,255,0.4)', backdropFilter: 'blur(20px)' }}>
-          {[
-            { Icon: Compass, active: true },
-            { Icon: Users, active: false },
-            { Icon: CalendarDays, active: false },
-            { Icon: Wallet, active: false },
-          ].map(({ Icon, active }, i) => (
-            <button
-              key={i}
-              className={`w-12 h-12 flex items-center justify-center rounded-full transition-all ${
-                active
-                  ? 'bg-[#00696b] text-white shadow-lg'
-                  : 'text-[#444748] hover:bg-black/5'
-              }`}
-            >
-              <Icon size={20} />
-            </button>
-          ))}
-        </div>
-      </aside> */}
 
       <main className="relative pt-20">
         {/* ─── HERO ─── */}
@@ -267,6 +244,152 @@ export default async function LandingPage() {
               <div>
                 <h3 className="text-[32px] font-bold leading-[1.3] tracking-[-0.01em] text-[#191c1d] mb-3">Offline Access</h3>
                 <p className="text-[#444748] max-w-md">No signal in the mountains? No problem. TripNest works offline and syncs as soon as you&apos;re back on the grid.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── FEATURED DESTINATIONS ─── */}
+        <section className="max-w-[1280px] mx-auto px-8 pb-32">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
+            <div className="max-w-2xl">
+              <span className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#00696b] mb-3 block">
+                Get Inspired
+              </span>
+              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#191c1d]">
+                Trending Nesting Spots
+              </h2>
+            </div>
+            <Link href="/signup" className="group flex items-center gap-2 font-bold text-[#191c1d]">
+              Explore all destinations
+              <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center group-hover:bg-[#3498db] group-hover:text-white transition-all">
+                <ArrowRight size={20} />
+              </div>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: 'Kyoto, Japan', img: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=800', tags: ['Culture', 'Serene'] },
+              { name: 'Santorini, Greece', img: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&q=80&w=800', tags: ['Romantic', 'Views'] },
+              { name: 'Reykjavik, Iceland', img: 'https://images.unsplash.com/photo-1520637102912-2df6bb2aec6d?auto=format&fit=crop&q=80&w=800', tags: ['Adventure', 'Nature'] },
+              { name: 'Bali, Indonesia', img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=800', tags: ['Tropical', 'Relax'] },
+            ].map((item, idx) => (
+              <div key={idx} className="group relative h-[420px] rounded-[2rem] overflow-hidden shadow-xl cursor-pointer">
+                <img
+                  src={item.img}
+                  alt={item.name}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-8 left-8 right-8 text-white">
+                  <div className="flex gap-2 mb-3">
+                    {item.tags.map((tag, tIdx) => (
+                      <span key={tIdx} className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-wider">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h4 className="text-2xl font-bold">{item.name}</h4>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ─── HOW IT WORKS ─── */}
+        <section id="how-it-works" className="max-w-[1280px] mx-auto px-8 pb-32">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#191c1d] mb-4">
+              Your Journey, Simplified
+            </h2>
+            <p className="text-lg text-[#444748] max-w-2xl mx-auto">
+              Three simple steps to your most organized adventure yet.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              {
+                step: '01',
+                title: 'Create Your Nest',
+                desc: 'Set up your trip space in seconds. Give it a name, dates, and a destination.',
+                icon: MapPin,
+              },
+              {
+                step: '02',
+                title: 'Invite Your Squad',
+                desc: 'Share a magic link with your travel partners. No sign-up friction, just pure collab.',
+                icon: Users,
+              },
+              {
+                step: '03',
+                title: 'Plan & Explore',
+                desc: 'Add stops, split bills, and build a gallery of memories together.',
+                icon: Sparkles,
+              },
+            ].map((item, i) => (
+              <div key={i} className="relative p-10 rounded-3xl border border-black/5 bg-white shadow-sm hover:shadow-xl transition-all group">
+                <div className="absolute top-0 right-10 -translate-y-1/2 text-7xl font-black text-black/5 group-hover:text-[#3498db]/10 transition-colors">
+                  {item.step}
+                </div>
+                <div className="w-14 h-14 rounded-2xl bg-[#3498db]/10 flex items-center justify-center text-[#3498db] mb-6">
+                  <item.icon size={28} />
+                </div>
+                <h4 className="text-2xl font-bold text-[#191c1d] mb-3">{item.title}</h4>
+                <p className="text-[#444748] leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ─── TESTIMONIALS ─── */}
+        <section className="max-w-[1280px] mx-auto px-8 pb-32">
+          <div className="bg-[#191c1d] rounded-[3rem] p-12 md:p-20 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#3498db] opacity-10 blur-[100px] -translate-y-1/2 translate-x-1/2" />
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+                  Loved by modern travelers.
+                </h2>
+                <div className="flex items-center gap-1 mb-8">
+                  {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="#f1c40f" color="#f1c40f" />)}
+                  <span className="text-white/60 ml-2 font-medium">4.9/5 from 10k+ users</span>
+                </div>
+                <div className="space-y-8">
+                  {[
+                    {
+                      text: "TripNest changed how we travel. No more messy group chats or forgotten expenses.",
+                      author: "Alex Rivera",
+                      role: "Digital Nomad",
+                      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200"
+                    },
+                    {
+                      text: "The real-time sync is flawless. We planned our entire Euro-trip in one evening.",
+                      author: "Sarah Chen",
+                      role: "Travel Blogger",
+                      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200"
+                    }
+                  ].map((t, i) => (
+                    <div key={i} className="border-l-2 border-[#3498db] pl-8">
+                      <p className="text-xl text-white/80 italic mb-4">"{t.text}"</p>
+                      <div className="flex items-center gap-4">
+                        <img src={t.img} alt={t.author} className="w-10 h-10 rounded-full object-cover" />
+                        <div>
+                          <p className="text-white font-bold">{t.author}</p>
+                          <p className="text-white/40 text-sm">{t.role}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="hidden lg:block relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=1000" 
+                  alt="Travel" 
+                  className="rounded-[2rem] shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-700"
+                />
               </div>
             </div>
           </div>
