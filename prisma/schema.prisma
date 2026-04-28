@@ -1,0 +1,171 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String
+  avatarUrl     String?
+  passwordHash  String?
+  createdAt     DateTime  @default(now())
+
+  tripsAsMember  TripMember[]
+  ownedTrips     Trip[]        @relation("TripOwner")
+  expenses       Expense[]     @relation("Payer")
+  expenseSplits  ExpenseSplit[]
+  activities     Activity[]    @relation("Actor")
+  memories       Memory[]
+  pollVotes      PollVote[]
+  packingClaims  PackingClaim[]
+  pollsCreated   Poll[]        @relation("PollCreator")
+  mapPins        MapPin[]      @relation("MapPinUser")
+}
+
+model Trip {
+  id            String    @id @default(cuid())
+  name          String
+  description   String?
+  coverImage    String?
+  startDate     DateTime
+  endDate       DateTime
+  currency      String    @default("EUR")
+  inviteCode    String    @unique
+  latitude      Float?
+  longitude     Float?
+  ownerId       String
+  owner         User      @relation("TripOwner", fields: [ownerId], references: [id])
+  createdAt     DateTime  @default(now())
+
+  members       TripMember[]
+  expenses      Expense[]
+  activities    Activity[]
+  memories      Memory[]
+  polls         Poll[]
+  packingItems  PackingItem[]
+  mapPins       MapPin[]
+}
+
+model TripMember {
+  id        String    @id @default(cuid())
+  role      String    @default("MEMBER")
+  joinedAt  DateTime  @default(now())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  tripId    String
+  trip      Trip      @relation(fields: [tripId], references: [id])
+
+  @@unique([userId, tripId])
+}
+
+model Expense {
+  id            String    @id @default(cuid())
+  description   String
+  amount        Float
+  originalAmount Float?
+  originalCurrency String?
+  paidAt        DateTime  @default(now())
+  tripId        String
+  trip          Trip      @relation(fields: [tripId], references: [id])
+  payerId       String
+  payer         User      @relation("Payer", fields: [payerId], references: [id])
+
+  splits        ExpenseSplit[]
+}
+
+model ExpenseSplit {
+  id          String  @id @default(cuid())
+  amount      Float
+  settled     Boolean @default(false)
+  expenseId   String
+  expense     Expense @relation(fields: [expenseId], references: [id])
+  userId      String
+  user        User    @relation(fields: [userId], references: [id])
+
+  @@unique([expenseId, userId])
+}
+
+model Activity {
+  id          String    @id @default(cuid())
+  type        String
+  payload     Json
+  createdAt   DateTime  @default(now())
+  tripId      String
+  trip        Trip      @relation(fields: [tripId], references: [id])
+  actorId     String
+  actor       User      @relation("Actor", fields: [actorId], references: [id])
+}
+
+model Memory {
+  id          String    @id @default(cuid())
+  title       String?
+  imageUrl    String
+  uploadedAt  DateTime  @default(now())
+  tripId      String
+  trip        Trip      @relation(fields: [tripId], references: [id])
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  likes       Int       @default(0)
+  comments    Json?
+}
+
+model Poll {
+  id          String    @id @default(cuid())
+  question    String
+  options     String[]
+  expiresAt   DateTime?
+  createdAt   DateTime  @default(now())
+  tripId      String
+  trip        Trip      @relation(fields: [tripId], references: [id])
+  creatorId   String
+  creator     User      @relation("PollCreator", fields: [creatorId], references: [id])
+
+  votes       PollVote[]
+}
+
+model PollVote {
+  id          String  @id @default(cuid())
+  optionIndex Int
+  pollId      String
+  poll        Poll    @relation(fields: [pollId], references: [id])
+  userId      String
+  user        User    @relation(fields: [userId], references: [id])
+
+  @@unique([pollId, userId])
+}
+
+model PackingItem {
+  id          String    @id @default(cuid())
+  name        String
+  tripId      String
+  trip        Trip      @relation(fields: [tripId], references: [id])
+  claims      PackingClaim[]
+}
+
+model PackingClaim {
+  id          String    @id @default(cuid())
+  itemId      String
+  item        PackingItem @relation(fields: [itemId], references: [id])
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  claimedAt   DateTime  @default(now())
+}
+
+model MapPin {
+  id          String    @id @default(cuid())
+  latitude    Float
+  longitude   Float
+  title       String
+  description String?
+  pinnedAt    DateTime  @default(now())
+  tripId      String
+  trip        Trip      @relation(fields: [tripId], references: [id])
+  userId      String
+  user        User      @relation("MapPinUser", fields: [userId], references: [id])
+}
