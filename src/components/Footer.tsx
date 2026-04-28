@@ -107,7 +107,7 @@ export function Footer() {
         {/* ── Bottom bar ── */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-slate-200/60 py-8 md:flex-row">
           <p className="text-sm text-slate-400">
-            © 2026 TripNest. Created by <span className="font-semibold text-slate-500">Raushan Kumar</span>.
+            © 2026 TripNest. Created by <span className="font-semibold text-slate-500">Sammi Azaz</span>.
           </p>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="text-xs text-slate-400 transition-colors duration-300 hover:text-[#3498db]">
