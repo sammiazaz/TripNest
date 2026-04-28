@@ -3,8 +3,9 @@ import { AuthProvider } from '@/components/AuthProvider';
 import { ConditionalLayout } from '@/components/ConditionalLayout';
 
 export const metadata = {
-  title: 'TripNest — Collaborative Travel Companion',
-  description: 'Plan, share, and experience trips together in real-time with TripNest.',
+  title: 'TripNest | The Ultimate Collaborative Travel Planner',
+  description: 'Experience the future of travel planning with TripNest. Coordinate itineraries, split expenses, and share memories with your group in real-time.',
+  keywords: ['travel', 'itinerary', 'group travel', 'trip planner', 'expense splitter'],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
